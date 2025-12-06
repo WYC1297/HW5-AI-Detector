@@ -413,11 +413,9 @@ def main():
         st.header("🧪 示例文本")
         if st.button("加載 AI 生成的範例", use_container_width=True, key="btn_ai"):
             st.session_state.text_input = get_random_example(is_ai=True)
-            st.rerun()
         
         if st.button("加載人類撰寫的範例", use_container_width=True, key="btn_human"):
             st.session_state.text_input = get_random_example(is_ai=False)
-            st.rerun()
     
     # 初始化 session state
     if 'text_input' not in st.session_state:
@@ -449,7 +447,6 @@ def main():
     with col2:
         if st.button("🗑️ 清除", use_container_width=True):
             st.session_state.text_input = ""
-            st.rerun()
     
     # 分析結果
     if analyze_button:
