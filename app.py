@@ -162,7 +162,17 @@ def show_statistics(text):
     with col2:
         st.metric("大寫字母比例", f"{features['uppercase_ratio']:.2%}")
 
-def show_feature_insights(text, result):
+def clear_text():
+    """清除文本的 callback 函數"""
+    st.session_state.text_input = ""
+
+def load_ai_example():
+    """加載 AI 範例的 callback 函數"""
+    st.session_state.text_input = get_random_example(is_ai=True)
+
+def load_human_example():
+    """加載人類範例的 callback 函數"""
+    st.session_state.text_input = get_random_example(is_ai=False)
     """顯示特徵分析和洞察"""
     st.header("🔬 特徵分析與洞察")
     
@@ -411,11 +421,11 @@ def main():
         st.divider()
         
         st.header("🧪 示例文本")
-        if st.button("加載 AI 生成的範例", use_container_width=True, key="btn_ai"):
-            st.session_state.text_input = get_random_example(is_ai=True)
+        if st.button("加載 AI 生成的範例", use_container_width=True, key="btn_ai", on_click=load_ai_example):
+            pass
         
-        if st.button("加載人類撰寫的範例", use_container_width=True, key="btn_human"):
-            st.session_state.text_input = get_random_example(is_ai=False)
+        if st.button("加載人類撰寫的範例", use_container_width=True, key="btn_human", on_click=load_human_example):
+            pass
     
     # 初始化 session state
     if 'text_input' not in st.session_state:
@@ -445,8 +455,8 @@ def main():
         analyze_button = st.button("🔍 分析", use_container_width=True, type="primary")
     
     with col2:
-        if st.button("🗑️ 清除", use_container_width=True):
-            st.session_state.text_input = ""
+        if st.button("🗑️ 清除", use_container_width=True, on_click=clear_text):
+            pass
     
     # 分析結果
     if analyze_button:
