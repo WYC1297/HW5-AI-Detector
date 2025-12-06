@@ -1,0 +1,22 @@
+# 忽略文件和目錄
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+.env
+.streamlit/
+
+# 數據文件（可選，如果太大）
+# AI_Human.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 模型文件（第一次運行後生成）
+models/
+*.pkl
