@@ -173,6 +173,8 @@ def load_ai_example():
 def load_human_example():
     """加載人類範例的 callback 函數"""
     st.session_state.text_input = get_random_example(is_ai=False)
+
+def show_feature_insights(text, result):
     """顯示特徵分析和洞察"""
     st.header("🔬 特徵分析與洞察")
     
